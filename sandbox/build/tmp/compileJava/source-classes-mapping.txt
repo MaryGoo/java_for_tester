@@ -1,12 +1,12 @@
-ru/stqa/pft/sandbox/Square.java
- ru.stqa.pft.sandbox.Square
+ru/stqa/pft/distanceBetweenPoint/Distance.java
+ ru.stqa.pft.distanceBetweenPoint.Distance
+ru/stqa/pft/distanceBetweenPoint/DistanceBetweenPoint.java
+ ru.stqa.pft.distanceBetweenPoint.DistanceBetweenPoint
+ru/stqa/pft/distanceBetweenPoint/Point.java
+ ru.stqa.pft.distanceBetweenPoint.Point
+ru/stqa/pft/sandbox/MyFirstProgramme.java
+ ru.stqa.pft.sandbox.MyFirstProgramme
 ru/stqa/pft/sandbox/Rectangle.java
  ru.stqa.pft.sandbox.Rectangle
-ru/stqa/pft/sandbox/Hello_World.java
- ru.stqa.pft.sandbox.Hello_World
-ru/stqa/pft/distance/Distance.java
- ru.stqa.pft.distance.Distance
-ru/stqa/pft/distance/Point.java
- ru.stqa.pft.distance.Point
-ru/stqa/pft/distance/DistanceBetweenPoint.java
- ru.stqa.pft.distance.DistanceBetweenPoint
+ru/stqa/pft/sandbox/Square.java
+ ru.stqa.pft.sandbox.Square
