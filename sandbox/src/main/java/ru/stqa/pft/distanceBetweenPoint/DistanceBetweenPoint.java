@@ -1,4 +1,4 @@
-package ru.stqa.pft.distance;
+package ru.stqa.pft.distanceBetweenPoint;
 
 public class DistanceBetweenPoint {
   public static void main(String[] args) {

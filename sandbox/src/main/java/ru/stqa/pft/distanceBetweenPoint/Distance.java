@@ -1,4 +1,4 @@
-package ru.stqa.pft.distance;
+package ru.stqa.pft.distanceBetweenPoint;
 
 public class Distance {
   private static double dist;
