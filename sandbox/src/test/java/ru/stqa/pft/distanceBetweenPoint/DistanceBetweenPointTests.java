@@ -10,7 +10,7 @@ public class DistanceBetweenPointTests {
   public void testDistanceBetweenPoint0() {
     Point p1 = new Point(4,4);
     Point p2 = new Point(4,4);
-    assertEquals(Distance.distance(p1,p2), 0);
+    assertEquals(p1.distance(p2), 0);
   }
 
   @Test
@@ -18,7 +18,7 @@ public class DistanceBetweenPointTests {
     Point p1 = new Point(4,4);
     Point p2 = new Point(1,1);
     double expectedResult = 3 * Math.sqrt(2);
-    double actualResult = Distance.distance(p1,p2);
+    double actualResult = p1.distance(p2);
     assertEquals(expectedResult, actualResult, 0.001);
   }
   @Test
@@ -26,7 +26,7 @@ public class DistanceBetweenPointTests {
     Point p1 = new Point(0,4);
     Point p2 = new Point(2,0);
     double expectedResult = (2 * Math.sqrt(5));
-    double actualResult = Distance.distance(p1,p2);
+    double actualResult = p1.distance(p2);
     assertEquals(expectedResult, actualResult, 0.001);
   }
   @Test
@@ -34,7 +34,7 @@ public class DistanceBetweenPointTests {
     Point p1 = new Point(-4,-4);
     Point p2 = new Point(-2,0);
     double expectedResult = (2 * Math.sqrt(5));
-    double actualResult = Distance.distance(p1,p2);
+    double actualResult = p1.distance(p2);
     assertEquals(expectedResult, actualResult, 0.001);
   }
 }
