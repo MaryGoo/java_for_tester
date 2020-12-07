@@ -32,12 +32,12 @@ public class GroupCreationTests {
   public void testGroupCreation() throws Exception {
     returnGroupPage();
     initGroupCreation();
-    fillGroupForm(new GroupData("test4", "test444", "test4444"));
+    fillGroupForm(new GroupDataNew("test4", "test444", "test4444"));
     submitGroupCreation();
     returnGroupPage();
   }
 
-  private void fillGroupForm(GroupData groupData) {
+  private void fillGroupForm(GroupDataNew groupData) {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.xpath("//form[@action='/addressbook/group.php']")).click();
     wd.findElement(By.name("group_name")).clear();
