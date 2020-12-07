@@ -29,15 +29,23 @@ public class TestContactCreation {
   }
 
   @Test
-  public void testOntactCreation() throws Exception {
+  public void testContactCreation() throws Exception {
     goToNewAddressbook();
-    fillFormForNewAddressbook(new FormForNewAddressbookName("mary", "mix", "goo", "maryGoo", "titleMary"));
-    fillCompany(new FormCompany("MMTR", "HGJHGJg 154/8", "353535", "8989885454"));
-    fillFormEmail();
-    fillDate();
+    fillFormForNewAddressbook(new FormForNewAddressbookName("maryghhs", "mfghix", "ghsfghoo", "marsfhyGoo", "titleMshhsary"));
+    fillCompany(new FormCompany("sfdhsfgh", "HGJHGJshfhfhg 154/8", "353535", "8989885454"));
+    fillFormEmail(new FormMail("hfjk1111g@fgh.ru", "email"));
+    fillFormEmail(new FormMail("hfjkg11122@fgh.ru", "email2"));
+    fillFormEmail(new FormMail("hfjkg111133@fgh.ru", "email3"));
+    fillFormHomePage(new FormHomePage("kgh111kgjh.ru"));
+    fillDate(new FormDate("a", "5", "March", "2000"));
+    fillDate(new FormDate("b", "10", "March", "2020"));
+    fillGroup(new FormGroupByAddNew("test3"));
+    submitAddNewContact();
     goToHomePage();
     logout();
   }
+
+
 
   private void goToNewAddressbook() {
     wd.findElement(By.linkText("add new")).click();
@@ -65,32 +73,25 @@ public class TestContactCreation {
     wd.findElement(By.name("mobile")).clear();
     wd.findElement(By.name("mobile")).sendKeys(formCompany.getMobilePhone());
   }
-    private void fillFormEmail() {
-      wd.findElement(By.name("email")).clear();
-      wd.findElement(By.name("email")).sendKeys("hfjkg@fgh.ru");
-      wd.findElement(By.name("email2")).clear();
-      wd.findElement(By.name("email2")).sendKeys("hfjkg22@fgh.ru");
-      wd.findElement(By.name("email3")).clear();
-      wd.findElement(By.name("email3")).sendKeys("hfjkg33@fgh.ru");
-      wd.findElement(By.name("homepage")).clear();
-      wd.findElement(By.name("homepage")).sendKeys("kghkgjh.ru");
+    private void fillFormEmail(FormMail formMail) {
+      wd.findElement(By.name(formMail.getMailNumber())).clear();
+      wd.findElement(By.name(formMail.getMailNumber())).sendKeys(formMail.getMailValue());
     }
-  private void fillDate(){
-    new Select(wd.findElement(By.name("bday"))).selectByVisibleText("1");
-    new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText("January");
-    wd.findElement(By.name("byear")).clear();
-    wd.findElement(By.name("byear")).sendKeys("2000");
-    new Select(wd.findElement(By.name("aday"))).selectByVisibleText("3");
-    new Select(wd.findElement(By.name("amonth"))).selectByVisibleText("March");
-    wd.findElement(By.name("ayear")).clear();
-    wd.findElement(By.name("ayear")).sendKeys("2020");
-    new Select(wd.findElement(By.name("new_group"))).selectByVisibleText("test3");
-    wd.findElement(By.name("address2")).clear();
-    wd.findElement(By.name("address2")).sendKeys("fkjghkfjgh");
-    wd.findElement(By.name("phone2")).clear();
-    wd.findElement(By.name("phone2")).sendKeys("22-2");
-    wd.findElement(By.name("notes")).clear();
-    wd.findElement(By.name("notes")).sendKeys("gjgh srtjhsth arthsh");
+  private void fillFormHomePage(FormHomePage formHomePage){
+      wd.findElement(By.name("homepage")).clear();
+      wd.findElement(By.name("homepage")).sendKeys(formHomePage.getNameHomePage());
+    }
+     private void fillDate(FormDate formDate) {
+      new Select(wd.findElement(By.name(formDate.getGroupDate() +"day"))).selectByVisibleText(formDate.getDay());
+      new Select(wd.findElement(By.name(formDate.getGroupDate() +"month"))).selectByVisibleText(formDate.getMonth());
+      wd.findElement(By.name(formDate.getGroupDate() +"year")).clear();
+      wd.findElement(By.name(formDate.getGroupDate() +"year")).sendKeys(formDate.getYear());
+    }
+  private void fillGroup(FormGroupByAddNew formGroupByAddNew) {
+    new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(formGroupByAddNew.getNameGroup());
+  }
+
+  private void submitAddNewContact(){
     wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
   }
 

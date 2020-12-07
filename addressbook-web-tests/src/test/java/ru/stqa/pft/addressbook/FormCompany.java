@@ -1,4 +1,4 @@
-﻿package ru.stqa.pft.addressbook;
+package ru.stqa.pft.addressbook;
 
 public class FormCompany {
   private final String company;
