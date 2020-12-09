@@ -6,7 +6,7 @@ public class TestGroupCreation extends TestBase {
 
   @Test
   public void testGroupCreation() throws Exception {
-    returnGroupPage();
+    goToGroupPage();
     initGroupCreation();
     fillGroupForm(new GroupDataNew("test4", "test444", "test4444"));
     submitGroupCreation();
