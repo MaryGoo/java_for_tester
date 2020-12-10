@@ -6,12 +6,13 @@ import ru.stqa.pft.addressbook.model.GroupDataNew;
 public class TestGroupCreation extends TestBase {
 
   @Test
-  public void testGroupCreation() {
-    app.getHelperGroup().returnGroupPage();
-    app.getHelperGroup().initGroupCreation();
-    app.getHelperGroup().fillGroupForm(new GroupDataNew("test4", "test444", "test4444"));
-    app.getHelperGroup().submitGroupCreation();
-    app.getHelperGroup().returnGroupPage();
+  public void testGroupCreation() throws Exception {
+    app.getNavigationHelper().goToGroupPage();
+    app.getGroupHelper().initGroupCreation();
+    app.getGroupHelper().fillGroupForm(new GroupDataNew("test4", "test444", "test4444"));
+    app.getGroupHelper().submitGroupCreation();
+    app.getGroupHelper().returnGroupPage();
+
   }
 
 }
