@@ -1,4 +1,4 @@
-package ru.stqa.pft.addressbook.appmaneger;
+package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -9,7 +9,7 @@ public class HelperBase {
   protected WebDriver wd;
 
   public HelperBase(WebDriver wd) {
-    this.wd=wd;
+    this.wd = wd;
   }
 
   protected void type(By locator, String text) {
@@ -21,6 +21,7 @@ public class HelperBase {
   protected void click(By locator) {
     wd.findElement(locator).click();
   }
+
   public boolean isElementPresent(By by) {
     try {
       wd.findElement(by);
