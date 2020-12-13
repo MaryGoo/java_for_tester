@@ -10,7 +10,7 @@ public class ContactHelper extends HelperBase {
   }
 
 
-  public void fillAddNewForm(ContactData contactData) {
+  public void fillAddNewContact(ContactData contactData) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("middlename"), contactData.getMiddlename());
     type(By.name("lastname"), contactData.getLastname());
@@ -23,7 +23,27 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail());
   }
 
-  public void submitAddNew() {
+  public void submitAddContact() {
     click(By.xpath("(//input[@name='submit'])[2]"));
+  }
+
+  public void chooseContact() {
+    click(By.name("selected[]"));
+  }
+
+  public void deleteContact() {
+    click(By.xpath("//input[@value='Delete']"));
+  }
+
+  public void closeAlert() {
+    wd.switchTo().alert().accept();
+  }
+
+  public void chooseEditContact() {
+    click(By.xpath("(//img[@alt='Edit'])[5]"));
+  }
+
+  public void updateContact() {
+    click(By.name("update"));
   }
 }
