@@ -7,6 +7,9 @@ public class GroupModificationTests extends TestBase{
   @Test
   public void testGroupModification(){
     app.getNavigationHelper().goToGroupPage();
+    if (! app.getGroupHelper().isTreheAGroup()) {
+      app.getGroupHelper().createGroup (new GroupDataNew("ghfhg",null, null));
+    }
     app.getGroupHelper().selectGroup();
     app.getGroupHelper().initGroupModification();
     app.getGroupHelper().fillGroupForm(new GroupDataNew("new group name", "454545","68764"));
