@@ -30,7 +30,7 @@ public class ApplicationManager {
     } else if(browser.equals(BrowserType.IE)) {
       wd = new InternetExplorerDriver();
     }
-   // System.setProperty("webdriver.chrome.driver", "C:\\Windows\\System32\\chromedriver.exe");
+
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
     groupHelper = new GroupHelper(wd);
