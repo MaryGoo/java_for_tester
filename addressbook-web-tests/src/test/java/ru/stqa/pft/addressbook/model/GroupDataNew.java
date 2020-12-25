@@ -20,11 +20,12 @@ public class GroupDataNew {
   }
 
   public GroupDataNew(String name, String header, String footer) {
-    this.id = 0;
+    this.id = Integer.MAX_VALUE;
     this.name = name;
     this.header = header;
     this.footer = footer;
   }
+
 
 
   public int getId() { return id; }
@@ -50,12 +51,12 @@ public class GroupDataNew {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     GroupDataNew that = (GroupDataNew) o;
-    return id == that.id &&
-            Objects.equals(name, that.name);
+    return Objects.equals(name, that.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(name);
   }
+
 }
