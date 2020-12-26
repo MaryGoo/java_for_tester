@@ -35,8 +35,8 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("(//input[@name='submit'])[2]"));
   }
 
-  public void chooseContact() {
-    click(By.name("selected[]"));
+  public void chooseContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void deleteContact() {
@@ -47,8 +47,8 @@ public class ContactHelper extends HelperBase {
     wd.switchTo().alert().accept();
   }
 
-  public void chooseEditContact() {
-    click(By.xpath("(//img[@alt='Edit'])[1]"));
+  public void chooseEditContact(int index) {
+    wd.findElements(By.cssSelector("a[href*='edit.php']")).get(index).click();
   }
 
   public void updateContact() {
@@ -71,7 +71,7 @@ public class ContactHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public int getGroupCount() {
+  public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
     }
 }
