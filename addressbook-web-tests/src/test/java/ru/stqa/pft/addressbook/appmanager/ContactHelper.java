@@ -68,10 +68,10 @@ public class ContactHelper extends HelperBase {
   }
 
   public boolean isThereAContact() {
-    return isElementPresent(By.name("selected[]"));
+    return isElementPresent(By.name("entry"));
   }
 
   public int getContactCount() {
-    return wd.findElements(By.name("selected[]")).size();
+    return wd.findElements(By.name("entry")).size();
     }
 }
