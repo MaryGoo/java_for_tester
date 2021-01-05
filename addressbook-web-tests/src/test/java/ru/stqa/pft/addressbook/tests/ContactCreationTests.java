@@ -24,7 +24,7 @@ public class ContactCreationTests extends TestBase {
             "csh@gmail.ru",
             "test4");
     app.getContactHelper().createContact(contact,true);
-    app.getNavigationHelper().goToHomePage();
+    app.goTo().homePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size() + 1);
 

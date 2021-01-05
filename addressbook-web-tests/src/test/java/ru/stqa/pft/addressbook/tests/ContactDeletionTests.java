@@ -9,7 +9,7 @@ import java.util.List;
 public class ContactDeletionTests extends TestBase {
   @Test(enabled = false)
   public void testContactDeletion() {
-    app.getNavigationHelper().goToHomePage();
+    app.goTo().homePage();
     if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Casha",
               "by",
@@ -23,12 +23,12 @@ public class ContactDeletionTests extends TestBase {
               "csh@gmail.ru",
               "test4"),true);
     }
-    app.getNavigationHelper().goToHomePage();
+    app.goTo().homePage();
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().chooseContact(before.size() - 1);
     app.getContactHelper().deleteContact();
     app.getContactHelper().closeAlert();
-    app.getNavigationHelper().goToHomePage();
+    app.goTo().homePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size() - 1);
 
