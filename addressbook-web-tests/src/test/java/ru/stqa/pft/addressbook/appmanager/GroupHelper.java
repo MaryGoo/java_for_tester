@@ -55,15 +55,11 @@ public class GroupHelper extends HelperBase {
     returnGroupPage();
   }
 
-  public boolean isThereAGroup() {
-    return isElementPresent(By.name("selected[]"));
+  public boolean isThereAGroup() { return isElementPresent(By.name("selected[]")); }
 
-  }
-
-    public int getGroupCount() {
+  public int getGroupCount() {
     return wd.findElements(By.name("selected[]")).size();
     }
-
 
   public List<GroupData> getGroupList() {
     List<GroupData> groups = new ArrayList<GroupData>();
@@ -76,6 +72,4 @@ public class GroupHelper extends HelperBase {
     }
     return groups;
   }
-
-
 }
