@@ -45,6 +45,5 @@ public class ContactModificationTests extends TestBase{
     after.sort(byId);
     Assert.assertEquals(before,after);
 
-    //Assert.assertEquals(new HashSet<>(before),new HashSet<>(after));
   }
 }

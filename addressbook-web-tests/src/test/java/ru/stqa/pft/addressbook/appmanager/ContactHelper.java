@@ -41,7 +41,6 @@ public class ContactHelper extends HelperBase {
 
   public void chooseContact(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
-    //click(By.name("selected[]"));
   }
 
   public void deleteContact() {
@@ -54,8 +53,6 @@ public class ContactHelper extends HelperBase {
 
   public void chooseEditContact(int index) {
     wd.findElements(By.xpath("//tr/td/a[contains(@href, 'edit.php?id')]")).get(index).click();
-    //click(By.xpath("(//img[@alt='Edit'])[1]"));
-    //a[@title='Faded Short Sleeve T-shirts']   title="Edit"
   }
 
   public void updateContact() {
@@ -66,11 +63,9 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-
-
-  public void createContact(ContactData contactData, boolean creation) {
+  public void createContact(ContactData contact, boolean creation) {
     goToAddNewPage();
-    fillAddNewContact(new ContactData("Casha", "by", "Lastname", "Cash", "Cashtitle", "MMTR", "street Shagova 180-5/1", "325525", "+7985656565", "csh@gmail.ru","test4"),true);
+    fillAddNewContact(contact,true);
     submitAddContact();
   }
 
