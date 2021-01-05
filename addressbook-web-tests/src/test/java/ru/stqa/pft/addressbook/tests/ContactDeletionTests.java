@@ -7,11 +7,21 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
-  @Test
+  @Test(enabled = false)
   public void testContactDeletion() {
     app.getNavigationHelper().goToHomePage();
     if (! app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(new ContactData("Casha", "by", "Lastname", "Cash", "Cashtitle", "MMTR", "street Shagova 180-5/1", "325525", "+7985656565", "csh@gmail.ru","test4"),true);
+      app.getContactHelper().createContact(new ContactData("Casha",
+              "by",
+              "Lastname",
+              "Cash",
+              "Cashtitle",
+              "MMTR",
+              "street Shagova 180-5/1",
+              "325525",
+              "+7985656565",
+              "csh@gmail.ru",
+              "test4"),true);
     }
     app.getNavigationHelper().goToHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
