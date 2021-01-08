@@ -131,7 +131,7 @@ public class ContactHelper extends HelperBase {
 
     private Contacts contactCache = null;
 
-    public Contacts all() {
+    /*public Contacts all() {
         if (contactCache != null) {
             return new Contacts(contactCache);
         }
@@ -144,6 +144,23 @@ public class ContactHelper extends HelperBase {
             int id = Integer.parseInt(element.findElement(By.name("selected[]")).getAttribute("value"));
             ContactData contact = new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
                     .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]);
+            contactCache.add(contact);
+        }
+        return new Contacts(contactCache);
+    }*/
+
+    public Contacts all() {
+        if (contactCache != null) {
+            return new Contacts(contactCache);
+        }
+        contactCache = new Contacts();
+        List<WebElement> elements = wd.findElements(By.name("entry"));
+        for (WebElement element : elements) {
+            String firstname = element.findElement(By.xpath(".//td[3]")).getText();
+            String lastname = element.findElement(By.xpath(".//td[2]")).getText();
+            String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
+            int id = Integer.parseInt(element.findElement(By.name("selected[]")).getAttribute("value"));
+            ContactData contact = new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).withAllPhones(allPhones);
             contactCache.add(contact);
         }
         return new Contacts(contactCache);

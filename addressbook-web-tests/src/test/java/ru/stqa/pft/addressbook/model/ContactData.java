@@ -16,6 +16,7 @@ public class ContactData {
   private String mobilePhone;
   private String email;
   private String group;
+  private String allPhones;
 
   public int getId() { return id; }
   public String getFirstname() {
@@ -48,10 +49,17 @@ public class ContactData {
   public String getMobilePhone() {
     return mobilePhone;
   }
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
   public String getEmail() {
     return email;
   }
-  public String getGroup() { return group;}
+  public String getGroup() {
+    return group;
+  }
 
   public ContactData withId(int id) {
     this.id = id;
@@ -71,21 +79,6 @@ public class ContactData {
   public ContactData withLastname(String lastname) {
     this.lastname = lastname;
     return this; //setter
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return id == that.id &&
-            Objects.equals(firstname, that.firstname) &&
-            Objects.equals(lastname, that.lastname);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, firstname, lastname);
   }
 
   public ContactData withNickname(String nickname) {
@@ -123,6 +116,11 @@ public class ContactData {
     return this; //setter
   }
 
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this; //setter
+  }
+
   public ContactData withEmail(String email) {
     this.email = email;
     return this; //setter
@@ -140,6 +138,20 @@ public class ContactData {
             ", firstname='" + firstname + '\'' +
             ", lastname='" + lastname + '\'' +
             '}';
+  }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return id == that.id &&
+            Objects.equals(firstname, that.firstname) &&
+            Objects.equals(lastname, that.lastname);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, firstname, lastname);
   }
 
 }
