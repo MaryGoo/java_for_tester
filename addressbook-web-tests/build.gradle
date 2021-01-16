@@ -9,6 +9,8 @@ dependencies {
     implementation 'it.ozimov:hamcrest:2.0.0'
     implementation 'com.beust:jcommander:1.48'
     implementation 'com.thoughtworks.xstream:xstream:1.4.15'
+    implementation 'com.google.code.gson:gson:2.8.6'
+
 }
 test {
     useTestNG()
