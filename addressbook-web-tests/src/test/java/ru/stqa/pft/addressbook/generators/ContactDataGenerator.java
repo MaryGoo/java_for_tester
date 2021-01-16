@@ -70,8 +70,6 @@ public class ContactDataGenerator {
     List<ContactData> contacts = new ArrayList<ContactData>();
     for (int i=0; i < count; i++) {
       contacts.add(new ContactData()
-              //.withFirstname(String.format("Lizi %s", i)).withLastname(String.format("Lizi %s", i))
-              //.withHomePhone("890999" +i + (i+1) + i + i).withGroup("test 5").withAddress(String.format("street Shagova 18 %s house %s",i+1)));
               .withFirstname(String.format("Lizi %s", i)).withLastname(String.format("Lizi %s", i)).withNickname("red").withGroup("test3")
               .withAddress(String.format("street Shagova 180-5/%s",i)).withEmail("csh@gmail.ru").withWorkPhone(String.format("+798565656%s",i))
               .withMobilePhone("416354654"));
