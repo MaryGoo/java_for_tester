@@ -1,0 +1,32 @@
+[
+  {
+    "firstname": "Lizi 0",
+    "lastname": "Lizi 0",
+    "nickname": "red",
+    "address": "street Shagova 180-5/0",
+    "workPhone": "+7985656560",
+    "mobilePhone": "416354654",
+    "email": "csh@gmail.ru",
+    "group": "test3"
+  },
+  {
+    "firstname": "Lizi 1",
+    "lastname": "Lizi 1",
+    "nickname": "red",
+    "address": "street Shagova 180-5/1",
+    "workPhone": "+7985656561",
+    "mobilePhone": "416354654",
+    "email": "csh@gmail.ru",
+    "group": "test3"
+  },
+  {
+    "firstname": "Lizi 2",
+    "lastname": "Lizi 2",
+    "nickname": "red",
+    "address": "street Shagova 180-5/2",
+    "workPhone": "+7985656562",
+    "mobilePhone": "416354654",
+    "email": "csh@gmail.ru",
+    "group": "test3"
+  }
+]

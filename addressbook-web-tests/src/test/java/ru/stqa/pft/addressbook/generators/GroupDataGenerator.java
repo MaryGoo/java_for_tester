@@ -38,7 +38,7 @@ public class GroupDataGenerator {
         generator.run();
     }
 
-    private void run() throws IOException {
+    void run() throws IOException {
         List<GroupData> groups = generateGroups(count);
         if (format.equals("csv")) {
             saveAsCsv(groups, new File(file));
@@ -62,7 +62,6 @@ public class GroupDataGenerator {
 
     private void saveAsXml(List<GroupData> groups, File file) throws IOException {
         XStream xstream = new XStream();
-        //xstream.alias("group", GroupData.class);
         xstream.processAnnotations(GroupData.class);
         String xml = xstream.toXML(groups);
         Writer writer = new FileWriter(file);
