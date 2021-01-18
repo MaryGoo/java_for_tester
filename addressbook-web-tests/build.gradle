@@ -16,10 +16,22 @@ task testGroups (type:Test) {
     useTestNG {
         suites 'src/test/resoures/testng-groups.xml' //groovy
     }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
 }
 
 task testContacts (type:Test) {
     useTestNG {
         suites 'src/test/resoures/testng-contacts.xml'
+    }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
     }
 }
