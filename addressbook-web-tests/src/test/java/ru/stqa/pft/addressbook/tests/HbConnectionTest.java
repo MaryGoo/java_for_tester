@@ -38,8 +38,8 @@ private SessionFactory sessionFactory;
   public void testHbConnection() {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
-    List result = session.createQuery( "from GroupData" ).list();
-    for (GroupData group : (List<GroupData>) result ) {
+    List<GroupData> result = session.createQuery( "from GroupData" ).list();
+    for (GroupData group : result ) {
       System.out.println( group );
     }
     session.getTransaction().commit();
