@@ -10,16 +10,31 @@ dependencies {
     implementation 'com.beust:jcommander:1.48'
     implementation 'com.thoughtworks.xstream:xstream:1.4.15'
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation 'mysql:mysql-connector-java:5.1.49'
+    implementation 'org.hibernate:hibernate-core:5.4.27.Final'
 }
 
 task testGroups (type:Test) {
     useTestNG {
         suites 'src/test/resoures/testng-groups.xml' //groovy
     }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
 }
 
 task testContacts (type:Test) {
     useTestNG {
         suites 'src/test/resoures/testng-contacts.xml'
+    }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
     }
 }
