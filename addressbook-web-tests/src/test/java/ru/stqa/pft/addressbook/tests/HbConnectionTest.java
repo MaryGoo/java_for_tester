@@ -38,7 +38,7 @@ private SessionFactory sessionFactory;
   public void testHbConnection() {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
-    List<GroupData> result = session.createQuery( "from GroupData where deprecated = '000-00-00'" ).list();
+    List<GroupData> result = session.createQuery( "from GroupData" ).list();
     for (GroupData group : result ) {
       System.out.println( group );
     }
@@ -51,7 +51,7 @@ private SessionFactory sessionFactory;
   public void testHbConnectionContact() {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
-    List<ContactData> result = session.createQuery( "from ContactData" ).list();
+    List<ContactData> result = session.createQuery( "from ContactData where deprecated = '000-00-00'" ).list();
     for (ContactData contact : result ) {
       System.out.println( contact );
     }
