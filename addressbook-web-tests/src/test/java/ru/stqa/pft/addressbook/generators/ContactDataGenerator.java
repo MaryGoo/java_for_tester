@@ -26,6 +26,8 @@ public class ContactDataGenerator {
   @Parameter (names = "-d", description = "Data format")
   public String format;
 
+  //-f src/test/resources/contact.json -c 3 -d json
+  //D:\github\java_for_tester\addressbook-web-tests
   public static void main (String[] args) throws IOException {
     ContactDataGenerator generator = new ContactDataGenerator();
     JCommander jCommander = new JCommander(generator);
@@ -70,10 +72,14 @@ public class ContactDataGenerator {
     List<ContactData> contacts = new ArrayList<ContactData>();
     for (int i=0; i < count; i++) {
       contacts.add(new ContactData()
-              .withFirstname(String.format("Lizi %s", i)).withLastname(String.format("Lizi %s", i)).withNickname("red").withGroup("test3")
-              .withAddress(String.format("street Shagova 180-5/%s",i)).withEmail("csh@gmail.ru").withWorkPhone(String.format("+798565656%s",i))
-              .withMobilePhone("416354654"));
+              .withFirstname(String.format("Lizi %s", i)).withMiddlename("").withLastname(String.format("Lizi %s", i)).withNickname("red")
+              .withTitle("").withCompany("NAME").withAddress(String.format("street Shagova 180-5/%s",i))
+              .withEmail(String.format("csh%s@gmail.ru", i)).withEmail2(String.format("cs2h%s@gmail.ru", i)).withEmail3(String.format("cs3h%s@gmail.ru", i))
+              .withWorkPhone(String.format("+798565656%s",i))
+              .withMobilePhone("416354654").withHomePhone("654676545").withMobilePhone("11111111")
+              //.withGroup("test3")
+      );
     }
-    return contacts;
+     return contacts;
   }
 }
