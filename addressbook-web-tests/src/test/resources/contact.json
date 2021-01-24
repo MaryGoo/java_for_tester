@@ -5,9 +5,8 @@
     "nickname": "red",
     "address": "street Shagova 180-5/0",
     "workPhone": "+7985656560",
-    "mobilePhone": "416354654",
-    "email": "csh@gmail.ru",
-    "group": "test3"
+    "mobilePhone": "11111111",
+    "email": "csh0@gmail.ru"
   },
   {
     "firstname": "Lizi 1",
@@ -15,8 +14,16 @@
     "nickname": "red",
     "address": "street Shagova 180-5/1",
     "workPhone": "+7985656561",
-    "mobilePhone": "416354654",
-    "email": "csh@gmail.ru",
-    "group": "test3"
+    "mobilePhone": "11111111",
+    "email": "csh1@gmail.ru"
+  },
+  {
+    "firstname": "Lizi 2",
+    "lastname": "Lizi 2",
+    "nickname": "red",
+    "address": "street Shagova 180-5/2",
+    "workPhone": "+7985656562",
+    "mobilePhone": "11111111",
+    "email": "csh2@gmail.ru"
   }
 ]
