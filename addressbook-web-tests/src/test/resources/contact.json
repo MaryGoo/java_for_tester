@@ -1,29 +1,34 @@
 [
   {
-    "firstname": "Lizi 0",
+    "firstname": "Lacy 0",
+    "middlename": "",
     "lastname": "Lizi 0",
     "nickname": "red",
+    "title": "",
+    "company": "NAME",
     "address": "street Shagova 180-5/0",
+    "homePhone": "654676545",
     "workPhone": "+7985656560",
     "mobilePhone": "11111111",
-    "email": "csh0@gmail.ru"
+    "email": "csh0@gmail.ru",
+    "email2": "cs2h0@gmail.ru",
+    "email3": "cs3h0@gmail.ru",
+    "group": "test3"
   },
   {
-    "firstname": "Lizi 1",
+    "firstname": "Lacy 1",
+    "middlename": "",
     "lastname": "Lizi 1",
     "nickname": "red",
+    "title": "",
+    "company": "NAME",
     "address": "street Shagova 180-5/1",
+    "homePhone": "654676545",
     "workPhone": "+7985656561",
     "mobilePhone": "11111111",
-    "email": "csh1@gmail.ru"
-  },
-  {
-    "firstname": "Lizi 2",
-    "lastname": "Lizi 2",
-    "nickname": "red",
-    "address": "street Shagova 180-5/2",
-    "workPhone": "+7985656562",
-    "mobilePhone": "11111111",
-    "email": "csh2@gmail.ru"
+    "email": "csh1@gmail.ru",
+    "email2": "cs2h1@gmail.ru",
+    "email3": "cs3h1@gmail.ru",
+    "group": "test3"
   }
 ]

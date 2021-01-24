@@ -13,44 +13,62 @@ public class ContactData {
   @Id
   @Column (name = "id")
   private int id = Integer.MAX_VALUE;
+
   @Expose
   @Column (name = "firstname")
   private String firstname;
+
+  @Expose
   @Column (name = "middlename")
   private String middlename;
+
   @Expose
   @Column (name = "lastname")
   private String lastname;
+
   @Expose
   @Column (name = "nickname")
   private String nickname;
+
+  @Expose
   @Column (name = "title")
   private String title;
+
+  @Expose
   @Column (name = "company")
   private String company;
+
   @Expose
   @Column (name = "address")
   @Type(type = "text")
   private String address;
 
+  @Expose
   @Column (name = "home")
   @Type(type = "text")
   private String homePhone;
+
   @Expose
   @Column (name = "work")
   @Type(type = "text")
   private String workPhone;
+
   @Expose
   @Column (name = "mobile")
   @Type(type = "text")
   private String mobilePhone;
+
   @Expose
   @Column (name = "email")
   @Type(type = "text")
   private String email;
+
+  @Expose
   @Column (name = "email2")
   @Type(type = "text")
   private String email2;
+
+  @Expose
   @Column (name = "email3")
   @Type(type = "text")
   private String email3;
@@ -250,12 +268,11 @@ public class ContactData {
             Objects.equals(mobilePhone, that.mobilePhone) &&
             Objects.equals(email, that.email) &&
             Objects.equals(email2, that.email2) &&
-            Objects.equals(email3, that.email3) &&
-            Objects.equals(group, that.group);
+            Objects.equals(email3, that.email3) ;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, firstname, middlename, lastname, nickname, title, company, address, homePhone, workPhone, mobilePhone, email, email2, email3, group);
+    return Objects.hash(id, firstname, middlename, lastname, nickname, title, company, address, homePhone, workPhone, mobilePhone, email, email2, email3);
   }
 }
