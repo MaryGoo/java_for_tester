@@ -13,9 +13,9 @@ public class ContactAddressTests extends TestBase{
     public void ensurePreconditions() {
         app.goTo().homePage();
         if (app.contact().list().size() == 0) {
-            app.contact().create(new ContactData()
+            app.contact().create(new ContactData()   //.withGroup("test3")
                     .withFirstname("LiziAdd").withLastname("SmirnovaAdd").withNickname("red").withWorkPhone("145236").withHomePhone("654647454").withMobilePhone("987545464")
-                    .withGroup("test3").withEmail("jhgflhf@dkj").withEmail2("fjjljf@jfff").withEmail3("lkdfj@hh")
+                    .withEmail("jhgflhf@dkj").withEmail2("fjjljf@jfff").withEmail3("lkdfj@hh")
                     .withAddress("street One, house 142, flat 14"), true);
         }
     }

@@ -77,7 +77,7 @@ public class ContactDataGenerator {
               .withEmail(String.format("csh%s@gmail.ru", i)).withEmail2(String.format("cs2h%s@gmail.ru", i)).withEmail3(String.format("cs3h%s@gmail.ru", i))
               .withWorkPhone(String.format("+798565656%s",i))
               .withMobilePhone("416354654").withHomePhone("654676545").withMobilePhone("11111111")
-              .withGroup("test3"));
+              /*.withGroup("test3")*/);
     }
      return contacts;
   }

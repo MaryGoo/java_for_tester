@@ -20,7 +20,7 @@ public class ContactModificationTests extends TestBase{
     if (app.db().contacts().size() == 0){
       app.goTo().homePage();
       app.contact().create(new ContactData()
-              .withFirstname("Lizi").withLastname("Smirnova").withNickname("red").withGroup("test3"), true);
+              .withFirstname("Lizi").withLastname("Smirnova").withNickname("red")/*.withGroup("test3")*/, true);
     }
   }
 

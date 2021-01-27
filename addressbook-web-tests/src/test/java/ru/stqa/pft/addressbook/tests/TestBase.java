@@ -52,6 +52,16 @@ public class TestBase {
     }
   }
 
+  /* public void verifyContactListUI() {
+    if (Boolean.getBoolean("verifyUI")) {  // -DverifyUI=true
+      Groups dbGroups = app.db().groups();
+      Groups uiGroups = app.group().all();
+      assertThat(uiGroups, equalTo(dbGroups.stream()
+              .map((g) -> new GroupData().withId(g.getId()).withName(g.getName()))
+              .collect(Collectors.toSet())));
+    }
+  }*/
+
   public ApplicationManager getApp() {return app;}
   
 }

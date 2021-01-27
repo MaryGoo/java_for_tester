@@ -5,7 +5,9 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table (name = "addressbook")
@@ -76,13 +78,18 @@ public class ContactData {
   private String allEmails;
   @Expose
   //@Column (name = "middlename")
-  @Transient // do not take from the database
-  private String group;
+  //@Transient // do not take from the database
+  //private String group;
   @Transient
   private String allPhones;
   @Column (name = "photo")
   @Type(type = "text")
   private String photo;
+
+  @ManyToMany (fetch = FetchType.EAGER)
+  @JoinTable (name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
   public File getPhoto() {
     return new File(photo);
@@ -135,8 +142,10 @@ public class ContactData {
   public String getAllEmails() {
     return allEmails;
   }
-  public String getGroup() {
-    return group;
+  /*public String getGroup() {     return group;  }*/
+
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
   public ContactData withPhoto(File photo) {
@@ -224,10 +233,9 @@ public class ContactData {
     return this; //setter
   }
 
-  public ContactData withGroup(String group) {
+  /*public ContactData withGroup(String group) {
     this.group = group;
-    return this; //setter
-  }
+    return this; //setter   } */
 
   @Override
   public String toString() {
@@ -246,7 +254,7 @@ public class ContactData {
             ", email='" + email + '\'' +
             ", email2='" + email2 + '\'' +
             ", email3='" + email3 + '\'' +
-            ", group='" + group + '\'' +
+            //", group='" + group + '\'' +
             '}';
   }
 
@@ -274,5 +282,10 @@ public class ContactData {
   @Override
   public int hashCode() {
     return Objects.hash(id, firstname, middlename, lastname, nickname, title, company, address, homePhone, workPhone, mobilePhone, email, email2, email3);
+  }
+
+  public ContactData inGroups(GroupData group) {
+    groups.add(group);
+    return this;
   }
 }
