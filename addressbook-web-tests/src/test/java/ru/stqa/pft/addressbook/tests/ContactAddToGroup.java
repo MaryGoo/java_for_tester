@@ -7,9 +7,6 @@ import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.CoreMatchers.equalTo;
-
 public class ContactAddToGroup extends TestBase {
 
   @BeforeMethod
@@ -29,25 +26,38 @@ public class ContactAddToGroup extends TestBase {
   }
 
   @Test
-  public void testContactAddToGroup (){
-    Groups groups = app.db().groups(); //via the database
-    GroupData groupTo = groups.iterator().next();
-    Contacts before = app.db().contacts();
-    ContactData addContact = before.iterator().next();
-    for (int i = 0; i < before.size(); i++) {
-      if (addContact.getGroups() == groups && i < before.size()) {
-        addContact = before.iterator().next();
-      } else {
-        app.goTo().groupPage();
-        app.group().create(new GroupData().withName("testElse"+i));
-        i = before.size();
-      }
-    }
+  public ContactData testContactAddToGroup (){
+    ContactData addContact = selectContact();
+    GroupData groupTo = selectGroup(addContact);
     app.goTo().homePage();
     app.contact().addToGroup(addContact, groupTo);
     app.goTo().homePage();
-    Contacts after = app.db().contacts();
-    assertThat(after, equalTo(before));
+    //Contacts after = app.db().contacts();
+    //assertThat(after, equalTo(co));
+    return null;
   }
 
-}
+   private ContactData selectContact() {
+     Contacts allContacts = app.db().contacts();
+     Groups allGroups = app.db().groups();
+     for (ContactData contact : allContacts) {
+       if (contact.getGroups().size() < allGroups.size()) {
+         return contact;
+       }
+     }
+     app.goTo().homePage();
+     ContactData contact = new ContactData().withFirstname("LiziFoGroup").withLastname("Smirnova").withNickname("red");
+     app.contact().create(contact,true);
+     Contacts newAllContacts = app.db().contacts();
+     return contact.withId(newAllContacts.stream().mapToInt((c) -> c.getId()).max().getAsInt());
+   }
+
+     private GroupData selectGroup(ContactData addContact) {
+       Groups allGroups = app.db().groups();
+       Groups contactGroups = addContact.getGroups();
+       for (GroupData group : contactGroups) {
+         allGroups.remove(group);
+       }
+       return allGroups.iterator().next();
+       }
+  }
