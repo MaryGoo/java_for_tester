@@ -10,6 +10,9 @@ import ru.stqa.pft.addressbook.model.Groups;
 import java.util.Collection;
 import java.util.HashSet;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class ContactAddToGroup extends TestBase {
 
   @BeforeMethod
@@ -17,12 +20,14 @@ public class ContactAddToGroup extends TestBase {
     if (app.db().groups().size() == 0) {
       app.goTo().groupPage();
       app.group().create(new GroupData().withName("test2"));
+
     }
 
     if (app.db().contacts().size() == 0) {
       app.goTo().homePage();
       app.contact().create(new ContactData()
-              .withFirstname("LiziFoGroup").withLastname("Smirnova").withNickname("red"), true);
+              .withFirstname("LiziFoGroup" ).withLastname("Smirnova" ).withNickname("red"), true);
+
     }
 
   }
@@ -31,11 +36,14 @@ public class ContactAddToGroup extends TestBase {
   public void testContactAddToGroup() {
     ContactData addContact = selectContact();
     GroupData toGroup = selectGroup(addContact);
+    Groups addContactGroupsAfter = addContact.getGroups();
     app.goTo().homePage();
     app.contact().addToGroup(addContact, toGroup);
     app.goTo().homePage();
-    //Contacts after = app.db().contacts();
-    //assertThat(after, equalTo(co));
+    Groups addContactGroupsBefore = addContact.getGroups();
+    addContactGroupsAfter.add(toGroup);
+    assertThat(addContactGroupsAfter, equalTo(addContactGroupsBefore));
+
   }
 
   private ContactData selectContact() {
@@ -59,6 +67,5 @@ public class ContactAddToGroup extends TestBase {
     different.removeAll(contactGroups);
     GroupData differentGroup = different.iterator().next();
     return differentGroup;
-
   }
 }
