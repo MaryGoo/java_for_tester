@@ -20,6 +20,7 @@ public class ApplicationManager {
 
   private String browser;
   private RegiatrationHelper regiatrationHelper;
+  private FtpHelper ftp;
 
 
   public ApplicationManager(String browser)  {
@@ -52,6 +53,13 @@ public HttpSession newSession () {
       regiatrationHelper = new RegiatrationHelper(this);
     }
     return regiatrationHelper;
+  }
+
+  public FtpHelper ftp(){
+    if (ftp == null) {
+      ftp = new FtpHelper(this);
+    }
+    return ftp;
   }
 
   public WebDriver getDriver() {
