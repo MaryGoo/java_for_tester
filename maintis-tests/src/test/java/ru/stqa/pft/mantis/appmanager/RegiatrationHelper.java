@@ -12,6 +12,6 @@ public class RegiatrationHelper {
   }
 
   public void start(String username, String email) {
-    wd.get(app.getProperty("wed.baseUrl" + "/signup_page.php"));
+    wd.get(app.getProperty("wed.baseUrl" /*+ "/signup_page.php"*/));
   }
 }
