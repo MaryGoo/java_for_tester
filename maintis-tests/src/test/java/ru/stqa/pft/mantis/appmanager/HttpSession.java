@@ -1,4 +1,4 @@
-package ru.stqa.mfp.mantis.appmanager;
+package ru.stqa.pft.mantis.appmanager;
 
 
 import org.apache.http.NameValuePair;
@@ -11,7 +11,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import ru.stqa.pft.mantis.appmanager.ApplicationManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class HttpSession {
     post.setEntity(new UrlEncodedFormEntity(params));
     CloseableHttpResponse response = httpclient.execute(post);
     String body = getTextFrom(response);
-    return body.contains(String.format("<span class=\"italic\">%s</span>", username));
+    return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
   }
 
   private String getTextFrom(CloseableHttpResponse response) throws IOException {
