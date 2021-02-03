@@ -21,6 +21,10 @@ public class ApplicationManager {
   private RegiatrationHelper regiatrationHelper;
   private FtpHelper ftp;
   private MailHelper mailHelper;
+  private DbHelper dbHelper;
+  private SessionHelper session;
+  private NavigationHelper goTo;
+  private UserHelper user;
 
 
   public ApplicationManager(String browser)  {
@@ -42,6 +46,8 @@ public class ApplicationManager {
 public HttpSession newSession () {
     return new HttpSession(this);
 }
+
+
 
 
   public String getProperty(String key) {
@@ -83,4 +89,30 @@ public HttpSession newSession () {
       }
     return mailHelper;
   }
+
+  public DbHelper db() {
+    return dbHelper;
+  }
+
+  public SessionHelper session() {
+    if (session == null) {
+      session = new SessionHelper(this);
+    }
+    return session;
+  }
+
+  public NavigationHelper goTo() {
+    if (goTo == null) {
+      goTo = new NavigationHelper(this);
+    }
+    return goTo;
+  }
+
+  public UserHelper user() {
+    if (user == null) {
+      user = new UserHelper(this);
+    }
+    return user;
+  }
+
 }
