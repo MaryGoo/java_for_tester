@@ -73,6 +73,7 @@ public class GroupHelper extends HelperBase {
     returnGroupPage();
   }
 
+
   public boolean isThereAGroup() { return isElementPresent(By.name("selected[]")); }
 
   public int count() {
