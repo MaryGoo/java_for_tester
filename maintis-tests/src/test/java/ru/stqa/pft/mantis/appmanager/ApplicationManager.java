@@ -25,16 +25,34 @@ public class ApplicationManager {
   private SessionHelper session;
   private NavigationHelper goTo;
   private UserHelper user;
+  private SessionHelper sessionHelper;
 
 
-  public ApplicationManager(String browser)  {
+  public ApplicationManager(String browser) {
     this.browser = browser;
     properties = new Properties();
   }
 
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
-    properties.load(new FileReader(new File(String.format( "src/test/resources/%s.properties", target))));
+    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+    dbHelper = new DbHelper();
+
+
+   /* if (browser.equals(BrowserType.CHROME)) {
+      wd = new ChromeDriver();
+    } else if (browser.equals(BrowserType.FIREFOX)) {
+      wd = new FirefoxDriver();
+    } else if(browser.equals(BrowserType.IE)) {
+      wd = new InternetExplorerDriver();
+    }
+    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    wd.get(properties.getProperty("wed.baseUrl"));  //("http://localhost/addressbook/");
+    /*userHelper = new UserHelper (wd);
+    /*navigationHelper = new NavigationHelper(wd);
+    sessionHelper = new SessionHelper(wd);
+    contactHelper = new ContactHelper(wd);
+    sessionHelper.loginUI(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));*/
   }
 
   public void stop() {
@@ -43,11 +61,9 @@ public class ApplicationManager {
     }
   }
 
-public HttpSession newSession () {
+  public HttpSession newSession() {
     return new HttpSession(this);
-}
-
-
+  }
 
 
   public String getProperty(String key) {
@@ -61,7 +77,7 @@ public HttpSession newSession () {
     return regiatrationHelper;
   }
 
-  public FtpHelper ftp(){
+  public FtpHelper ftp() {
     if (ftp == null) {
       ftp = new FtpHelper(this);
     }
@@ -74,21 +90,23 @@ public HttpSession newSession () {
         wd = new ChromeDriver();
       } else if (browser.equals(BrowserType.FIREFOX)) {
         wd = new FirefoxDriver();
-      } else if(browser.equals(BrowserType.IE)) {
+      } else if (browser.equals(BrowserType.IE)) {
         wd = new InternetExplorerDriver();
       }
       wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-      wd.get(properties.getProperty("wed.baseUrl"));
+      wd.get(properties.getProperty("web.baseUrl"));
     }
     return wd;
   }
 
-  public MailHelper mail(){
+  public MailHelper mail() {
     if (mailHelper == null) {
       mailHelper = new MailHelper(this);
-      }
+    }
     return mailHelper;
   }
+
+
 
   public DbHelper db() {
     return dbHelper;

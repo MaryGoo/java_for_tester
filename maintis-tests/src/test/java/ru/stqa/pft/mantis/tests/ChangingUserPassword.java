@@ -3,10 +3,16 @@ package ru.stqa.pft.mantis.tests;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import ru.lanwen.verbalregex.VerbalExpression;
+import ru.stqa.pft.mantis.model.MailMessage;
 import ru.stqa.pft.mantis.model.UserData;
 import ru.stqa.pft.mantis.model.Users;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
+import java.util.List;
+
+import static org.testng.AssertJUnit.assertTrue;
 
 public class ChangingUserPassword extends TestBase {
 
@@ -16,14 +22,31 @@ public class ChangingUserPassword extends TestBase {
   }
 
   @Test
-  public void testChangingUserPassword() throws IOException {
+  public void testChangingUserPassword() throws IOException, MessagingException {
     Users before = app.db().users();
     UserData modifyUser = before.iterator().next();
+    long time = System.currentTimeMillis();
+    String realName = String.format("realName%s",time);
+    String password = "password";
+    String email = modifyUser.getEmail();
+    String user = modifyUser.getUsername();
     app.session().loginUI("administrator", "root");
     app.goTo().manageUserPage();
     app.user().selectUser(modifyUser.getId());
     app.user().resetPassword();
+    app.session().logout();
 
+    List<MailMessage> mailMessages =  app.mail().waitForMail(1, 10000);
+    String confirmationLink= findConfirmationLink (mailMessages, email);
+    app.registration().finish(confirmationLink, password, realName);
+    assertTrue(app.newSession().login(user, password));
+  }
+
+
+  private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
+    MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
+    VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
+    return regex.getText(mailMessage.text);
   }
 
   @AfterMethod(alwaysRun = true)
@@ -32,70 +55,5 @@ public class ChangingUserPassword extends TestBase {
   }
 
 }
-/*
-public class UntitledTestCase {
-  private WebDriver driver;
-  private String baseUrl;
-  private boolean acceptNextAlert = true;
-  private StringBuffer verificationErrors = new StringBuffer();
 
-  @BeforeClass(alwaysRun = true)
-  public void setUp() throws Exception {
-    driver = new FirefoxDriver();
-    baseUrl = "https://www.google.com/";
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-  }
 
-  @Test
-  public void testUntitledTestCase() throws Exception {
-
-    driver.findElement(By.xpath("//div[@id='sidebar']/ul/li[6]/a/i")).click();
-    driver.findElement(By.linkText("Manage Users")).click();
-    driver.findElement(By.linkText("user1612287382815")).click();
-    driver.findElement(By.xpath("//input[@value='Reset Password']")).click();
-    driver.findElement(By.xpath("//input[@value='Reset Password']")).click();
-  }
-
-  @AfterClass(alwaysRun = true)
-  public void tearDown() throws Exception {
-    driver.quit();
-    String verificationErrorString = verificationErrors.toString();
-    if (!"".equals(verificationErrorString)) {
-      fail(verificationErrorString);
-    }
-  }
-
-  private boolean isElementPresent(By by) {
-    try {
-      driver.findElement(by);
-      return true;
-    } catch (NoSuchElementException e) {
-      return false;
-    }
-  }
-
-  private boolean isAlertPresent() {
-    try {
-      driver.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
-
-  private String closeAlertAndGetItsText() {
-    try {
-      Alert alert = driver.switchTo().alert();
-      String alertText = alert.getText();
-      if (acceptNextAlert) {
-        alert.accept();
-      } else {
-        alert.dismiss();
-      }
-      return alertText;
-    } finally {
-      acceptNextAlert = true;
-    }
-  }
-}
-*/

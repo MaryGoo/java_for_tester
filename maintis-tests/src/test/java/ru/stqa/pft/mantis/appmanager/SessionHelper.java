@@ -17,4 +17,10 @@ public class SessionHelper extends HelperBase {
     click(By.xpath("//input[@value='Login']"));
 
   }
+
+  public void logout() {
+    click(By.xpath("//i[2]"));
+    click(By.linkText("Logout"));
+
+  }
 }

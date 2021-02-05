@@ -10,6 +10,8 @@ import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
 
+import static org.testng.AssertJUnit.assertTrue;
+
 public class RegistrationTests extends TestBase{
 
   @BeforeMethod
@@ -28,7 +30,7 @@ public class RegistrationTests extends TestBase{
     List<MailMessage> mailMessages =  app.mail().waitForMail(2, 10000);
     String confirmationLink= findConfirmationLink (mailMessages, email);
     app.registration().finish(confirmationLink, password, realName);
-    //assertTrue(app.newSession().login(user, password));
+    assertTrue(app.newSession().login(user, password));
   }
 
   private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
