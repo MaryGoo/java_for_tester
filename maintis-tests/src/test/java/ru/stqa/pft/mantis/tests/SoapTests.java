@@ -29,4 +29,5 @@ public class SoapTests extends TestBase {
     Issue createdIssue = app.soap().addIssue(issue);
     Assert.assertEquals(issue.getSummary(), createdIssue.getSummary());
   }
+
 }
