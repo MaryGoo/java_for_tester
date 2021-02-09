@@ -24,7 +24,13 @@ public class ChangingUserPassword extends TestBase {
   @Test
   public void testChangingUserPassword() throws IOException, MessagingException {
     Users before = app.db().users();
+    before.removeIf(elem -> elem.getUsername().equals("administrator"));
+    if (before.size() == 0) {
+      return;
+    }
     UserData modifyUser = before.iterator().next();
+    System.out.println(before);
+    System.out.println(modifyUser);
     long time = System.currentTimeMillis();
     String realName = String.format("realName%s",time);
     String password = "password";
